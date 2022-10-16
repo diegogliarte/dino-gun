@@ -3,7 +3,7 @@
 
 
 int main(int argc, char const *argv[]) {
-    sf::RenderWindow window(sf::VideoMode(720, 720), "Hello From SFML");
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Hello From SFML");
     sf::Texture tRexTexture;
     tRexTexture.loadFromFile("./sprites/t_rex.png");
     T_Rex tRex(&tRexTexture);
@@ -17,7 +17,6 @@ int main(int argc, char const *argv[]) {
         while (window.pollEvent(event)) {
             switch (event.type) {
                 case sf::Event::Closed:
-                case sf::Event::KeyPressed:
                     window.close();
                     break;
 
@@ -26,7 +25,7 @@ int main(int argc, char const *argv[]) {
             }
         }
         window.clear(sf::Color(255, 255, 255));
-        tRex.update(deltaTime);
+        tRex.update(deltaTime, 1);
         window.draw(tRex);
         window.display();
     }

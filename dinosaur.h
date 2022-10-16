@@ -16,7 +16,7 @@
 class Dinosaur : public sf::Sprite {
 public:
     Dinosaur(sf::Texture* texture, sf::Vector2f position, sf::Vector2u textureImageCount);
-    void update(float deltaTime);
+    void update(float deltaTime, int textureRow);
 
 private:
     Animation animation;

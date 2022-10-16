@@ -8,7 +8,7 @@ class Animation {
 public:
     sf::IntRect textureRect;
     Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
-    void update(int row, float deltaTime);
+    void update(int textureRow, float deltaTime);
 
 private:
     sf::Vector2u imageCount;

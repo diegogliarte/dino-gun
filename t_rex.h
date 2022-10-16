@@ -5,8 +5,9 @@
 
 class T_Rex : public Dinosaur {
 public:
+    sf::Vector2f velocity;
     T_Rex(sf::Texture* texture);
-    void update(float deltaTime);
+    void update(float deltaTime, int textureRow);
 private:
 };
 
