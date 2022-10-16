@@ -11,17 +11,16 @@
 #include <iostream>
 #include <SFML/Window/Keyboard.hpp>
 
+#include "animation.h"
+
 class Dinosaur : public sf::Sprite {
-private:
-    sf::Texture texture;
 public:
-    Dinosaur();
-    Dinosaur(std::string texturePath, sf::Vector2f position);
+    Dinosaur(sf::Texture* texture, sf::Vector2f position, sf::Vector2u textureImageCount);
+    void update(float deltaTime);
 
-    void update() {
-
-    }
-
+private:
+    Animation animation;
+    sf::Texture texture;
 };
 
 

@@ -4,9 +4,10 @@
 #define DINO_GUN_T_REX_H
 
 class T_Rex : public Dinosaur {
-private:
 public:
-    T_Rex();
+    T_Rex(sf::Texture* texture);
+    void update(float deltaTime);
+private:
 };
 
 
