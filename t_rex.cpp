@@ -3,8 +3,9 @@
 #include "t_rex.h"
 
 
-T_Rex::T_Rex(sf::Texture* texture)
-: Dinosaur(texture, sf::Vector2f(50, 300), sf::Vector2u(2, 2)) {
+T_Rex::T_Rex(sf::Texture* texture, int groundHeight)
+: Dinosaur(texture, sf::Vector2f(50, groundHeight), sf::Vector2u(2, 2)) {
+    this->groundHeight = groundHeight;
 
 }
 

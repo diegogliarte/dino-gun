@@ -1,17 +1,23 @@
 #include <SFML/Graphics.hpp>
 #include "t_rex.h"
 #include "game_manager.h"
+#include "ground.h"
 
 
 int main(int argc, char const *argv[]) {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Hello From SFML");
+    int width = 1280;
+    int height = 720;
+    int groundHeight = 300;
+    sf::RenderWindow window(sf::VideoMode(width, height), "Hello From SFML");
 
     sf::Texture tRexTexture;
     tRexTexture.loadFromFile("./sprites/t_rex.png");
-    T_Rex tRex(&tRexTexture);
+    T_Rex tRex(&tRexTexture, groundHeight);
 
-    int groundHeight = 300;
-    GameManager gameManager(&tRex, groundHeight);
+    float groundSpeed = 0.005f;
+    Ground ground(width, groundHeight, groundSpeed);
+
+    GameManager gameManager(&tRex, &ground, &window);
 
     while (window.isOpen()) {
         sf::Event event;
@@ -28,7 +34,7 @@ int main(int argc, char const *argv[]) {
 
         window.clear(sf::Color(255, 255, 255));
         gameManager.update();
-        gameManager.draw(&window);
+        gameManager.draw();
         window.display();
     }
 

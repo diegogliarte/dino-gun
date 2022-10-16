@@ -12,3 +12,7 @@ void Dinosaur::update(float deltaTime, int textureRow) {
     setTextureRect(animation.textureRect);
 }
 
+void Dinosaur::draw(sf::RenderWindow* window) {
+    window->draw(*this);
+}
+

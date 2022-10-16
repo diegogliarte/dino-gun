@@ -6,13 +6,14 @@
 class T_Rex : public Dinosaur {
 public:
     sf::Vector2f velocity;
-    int groundHeight = 0;
 
-    T_Rex(sf::Texture* texture);
+    T_Rex(sf::Texture* texture, int groundHeight);
 
     void update(float deltaTime, int textureRow);
     void setPositionY(int y);
 private:
+    int groundHeight = 0;
+
 
 };
 

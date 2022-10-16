@@ -1,9 +1,10 @@
 #include "game_manager.h"
 #include "t_rex.h"
 
-GameManager::GameManager(T_Rex* tRex, int groundHeight) {
+GameManager::GameManager(T_Rex* tRex, Ground* ground, sf::RenderWindow* window) {
     this->tRex = tRex;
-    this->tRex->groundHeight = groundHeight;
+    this->ground = ground;
+    this->window = window;
 }
 
 void GameManager::update() {
@@ -12,11 +13,13 @@ void GameManager::update() {
         dinosaur.update(deltaTime, 0);
     }
     tRex->update(deltaTime, 1);
+    ground->update(deltaTime);
 }
 
-void GameManager::draw(sf::RenderWindow *window) {
-    for (Dinosaur& dinosaur : dinosaurs) {
-        window->draw(dinosaur);
+void GameManager::draw() {
+    for (Dinosaur dinosaur : dinosaurs) {
+        dinosaur.draw(window);
     }
-    window->draw(*tRex);
+    tRex->draw(window);
+    ground->draw(window);
 }
