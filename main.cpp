@@ -8,13 +8,14 @@ int main(int argc, char const *argv[]) {
     int width = 1280;
     int height = 720;
     int groundHeight = 300;
-    sf::RenderWindow window(sf::VideoMode(width, height), "Hello From SFML");
+    sf::RenderWindow window(sf::VideoMode(width, height), "DinoGun");
 
     sf::Texture tRexTexture;
     tRexTexture.loadFromFile("./sprites/t_rex.png");
-    T_Rex tRex(&tRexTexture, groundHeight);
+    int groundMisplacementCorrection = 55;
+    T_Rex tRex(&tRexTexture, groundHeight - groundMisplacementCorrection);
 
-    float groundSpeed = 0.005f;
+    float groundSpeed = 0.0025f;
     Ground ground(width, groundHeight, groundSpeed);
 
     GameManager gameManager(&tRex, &ground, &window);

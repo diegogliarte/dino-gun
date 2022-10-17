@@ -12,14 +12,14 @@ void GameManager::update() {
     for (Dinosaur& dinosaur : dinosaurs) {
         dinosaur.update(deltaTime, 0);
     }
-    tRex->update(deltaTime, 1);
     ground->update(deltaTime);
+    tRex->update(deltaTime, 1);
 }
 
 void GameManager::draw() {
     for (Dinosaur dinosaur : dinosaurs) {
         dinosaur.draw(window);
     }
-    tRex->draw(window);
     ground->draw(window);
+    tRex->draw(window);
 }
