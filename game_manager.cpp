@@ -13,9 +13,9 @@ GameManager::GameManager(T_Rex* tRex, Ground* ground, sf::RenderWindow* window, 
 
     int numCactus = 1;
     for (int i = 0; i < numCactus; i++) {
-        Cacti cacti(backgroundSpeed);
+        Cacti cacti(backgroundSpeed, window->getSize().x);
         cacti.setTexture(this->cactiTexture);
-        cacti.setPosition(1000, this->ground->groundHeight);
+        cacti.setPosition(window->getSize().x, this->ground->groundHeight - 55);
         this->cactus.push_back(cacti);
     }
 }
@@ -28,6 +28,9 @@ void GameManager::update() {
     }
     for (Cacti& cacti : cactus) {
         cacti.update(deltaTime);
+        if (tRex->getGlobalBounds().intersects(cacti.getGlobalBounds())) {
+            tRex->setColor(sf::Color(255, 0, 0));
+        }
     }
     tRex->update(deltaTime, 1);
 }

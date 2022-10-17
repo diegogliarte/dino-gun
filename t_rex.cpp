@@ -11,7 +11,7 @@ T_Rex::T_Rex(sf::Texture* texture, int groundHeight)
 
 void T_Rex::update(float deltaTime, int textureRow) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && getPosition().y == groundHeight) {
-        velocity.y = -sqrt(2.0f * 981.0f * 200);
+        velocity.y = -sqrt(2.0f * 981.0f * 350);
     }
 
     velocity.y += 2 * 981.0f * deltaTime;
