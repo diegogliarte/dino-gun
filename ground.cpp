@@ -5,10 +5,10 @@
 
 #include "ground.h"
 
-Ground::Ground(int groundWidth, int groundHeight, float groundSpeed) {
+Ground::Ground(int groundWidth, int groundHeight, float backgroundSpeed) {
     srand(time(NULL));
     this->groundHeight = groundHeight;
-    this->groundSpeed = groundSpeed;
+    this->backgroundSpeed = backgroundSpeed;
 
     this->texture.loadFromFile("./sprites/ground.png");
     sf::Vector2u textureSize = this->texture.getSize();
@@ -28,8 +28,8 @@ Ground::Ground(int groundWidth, int groundHeight, float groundSpeed) {
 void Ground::update(float deltaTime) {
     totalTime += deltaTime;
 
-    if (totalTime >= groundSpeed) {
-        totalTime -= groundSpeed;
+    if (totalTime >= backgroundSpeed) {
+        totalTime -= backgroundSpeed;
         int disappearanceThreshold = -5;
         for (sf::Sprite& segment : segments) {
             segment.move(-1, 0);

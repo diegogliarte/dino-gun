@@ -15,10 +15,10 @@ int main(int argc, char const *argv[]) {
     int groundMisplacementCorrection = 55;
     T_Rex tRex(&tRexTexture, groundHeight - groundMisplacementCorrection);
 
-    float groundSpeed = 0.0025f;
-    Ground ground(width, groundHeight, groundSpeed);
+    float backgroundSpeed = 0.0025f;
+    Ground ground(width, groundHeight, backgroundSpeed);
 
-    GameManager gameManager(&tRex, &ground, &window);
+    GameManager gameManager(&tRex, &ground, &window, backgroundSpeed);
 
     while (window.isOpen()) {
         sf::Event event;

@@ -10,13 +10,13 @@ public:
     int groundHeight;
     sf::Texture texture;
     std::vector<sf::Sprite> segments;
-    Ground(int groundWidth, int groundHeight, float groundSpeed);
+    Ground(int groundWidth, int groundHeight, float backgroundSpeed);
     void update(float deltaTime);
     void draw(sf::RenderWindow* window);
 private:
     float totalTime = 0;
     int segmentSize = 400;
-    float groundSpeed;
+    float backgroundSpeed;
 };
 
 
