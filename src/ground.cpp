@@ -8,7 +8,7 @@
 
 Ground::Ground(sf::Texture* texture, int* groundWidth, int* groundHeight, float* backgroundSpeed) {
 
-    srand(time(NULL));
+    srand(time(nullptr));
     this->texture = *texture;
     this->groundHeight = groundHeight;
     this->backgroundSpeed = backgroundSpeed;
@@ -19,7 +19,7 @@ Ground::Ground(sf::Texture* texture, int* groundWidth, int* groundHeight, float*
     for (int i = 0; i < numSegments; i++) {
         sf::Sprite segment;
         segment.setTexture(this->texture);
-        int randomTexture = 0; // TODO Fix randomness
+        int randomTexture = rand() % numSegments;
         sf::IntRect rect(segmentSize * randomTexture, 0, segmentSize, textureSize.y);
         segment.setTextureRect(rect);
         segment.setPosition(segmentSize * i, *groundHeight);
@@ -38,7 +38,7 @@ void Ground::update(float deltaTime) {
             segment.move(-1, 0);
             if (segment.getPosition().x + segmentSize <= disappearanceThreshold) {
                 segment.setPosition((segments.size() - 1) * segmentSize + disappearanceThreshold, *groundHeight);
-                int randomTexture = 1;
+                int randomTexture = rand() % segments.size();
                 segment.setTextureRect(sf::IntRect(segmentSize * randomTexture % texture.getSize().x, 0, segmentSize, texture.getSize().y));
             }
         }
