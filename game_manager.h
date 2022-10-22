@@ -5,22 +5,23 @@
 #include "t_rex.h"
 #include "ground.h"
 #include "cacti.h"
+#include "constantsLoader.h"
+
 
 class GameManager {
 public:
     std::vector<Dinosaur> dinosaurs;
     std::vector<Cacti> cactus;
-    T_Rex* tRex;
-    Ground* ground;
+    T_Rex tRex;
+    Ground ground;
     sf::RenderWindow* window;
-    GameManager(T_Rex* tRex, Ground* ground, sf::RenderWindow* window, float backgroundSpeed);
+    GameManager(ConstantsLoader* constantsLoader, sf::RenderWindow* window);
     void update();
     void draw();
 
 private:
     sf::Clock clock;
-    sf::Texture cactiTexture;
-    float backgroundSpeed;
+    ConstantsLoader *constantsLoader;
     void gameOver();
 };
 

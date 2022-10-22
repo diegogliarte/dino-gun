@@ -2,24 +2,14 @@
 #include "t_rex.h"
 #include "game_manager.h"
 #include "ground.h"
+#include "constantsLoader.h"
 
 
 int main(int argc, char const *argv[]) {
-    int width = 1280;
-    int height = 720;
-    int groundHeight = 300;
-    sf::RenderWindow window(sf::VideoMode(width, height), "DinoGun");
+    ConstantsLoader constantsLoader;
+    sf::RenderWindow window(sf::VideoMode(constantsLoader.windowWidth, constantsLoader.windowHeight), "DinoGun");
 
-    sf::Texture tRexTexture;
-    tRexTexture.loadFromFile("./sprites/t_rex.png");
-    int groundMisplacementCorrection = 55;
-    int jumpHeight = 350;
-    T_Rex tRex(&tRexTexture, groundHeight - groundMisplacementCorrection, jumpHeight);
-
-    float backgroundSpeed = 0.0025f;
-    Ground ground(width, groundHeight, backgroundSpeed);
-
-    GameManager gameManager(&tRex, &ground, &window, backgroundSpeed);
+    GameManager gameManager(&constantsLoader, &window);
 
     while (window.isOpen()) {
         sf::Event event;
