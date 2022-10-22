@@ -7,13 +7,13 @@
 class Cacti : public sf::Sprite{
 public:
     sf::Texture texture;
-    Cacti(float backgroundSpeed, int windowWidth);
+    Cacti(float* backgroundSpeed, int* windowWidth);
     void update(float deltaTime);
     void draw(sf::RenderWindow* window);
 private:
-    float backgroundSpeed;
+    float* backgroundSpeed;
+    int* windowWidth;
     float totalTime = 0;
-    int windowWidth;
 };
 
 

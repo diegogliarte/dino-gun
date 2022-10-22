@@ -7,16 +7,16 @@
 
 class Ground {
 public:
-    int groundHeight;
     sf::Texture texture;
     std::vector<sf::Sprite> segments;
-    Ground(int groundWidth, int groundHeight, float backgroundSpeed);
+    Ground(int* groundWidth, int* groundHeight, float* backgroundSpeed);
     void update(float deltaTime);
     void draw(sf::RenderWindow* window);
 private:
+    int* groundHeight;
+    float* backgroundSpeed;
     float totalTime = 0;
     int segmentSize = 400;
-    float backgroundSpeed;
 };
 
 

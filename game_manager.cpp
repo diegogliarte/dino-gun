@@ -5,17 +5,17 @@
 
 
 GameManager::GameManager(ConstantsLoader* constantsLoader, sf::RenderWindow* window) :
-tRex(&constantsLoader->tRexTexture, constantsLoader->tRexHeight, constantsLoader->tRexJumpHeight),
-ground(constantsLoader->windowWidth, constantsLoader->groundHeight, constantsLoader->backgroundSpeed)
+tRex(&constantsLoader->tRexTexture, &constantsLoader->tRexHeight, &constantsLoader->tRexJumpHeight),
+ground(&constantsLoader->windowWidth, &constantsLoader->groundHeight, &constantsLoader->backgroundSpeed)
 {
     this->constantsLoader = constantsLoader;
     this->window = window;
 
     int numCactus = 1;
     for (int i = 0; i < numCactus; i++) {
-        Cacti cacti(this->constantsLoader->backgroundSpeed, window->getSize().x);
+        Cacti cacti(&this->constantsLoader->backgroundSpeed, &this->constantsLoader->windowWidth);
         cacti.setTexture(this->constantsLoader->cactiTexture);
-        cacti.setPosition(window->getSize().x, this->ground.groundHeight - 55);
+        cacti.setPosition(this->constantsLoader->windowWidth, this->constantsLoader->groundHeight - 55);
         this->cactus.push_back(cacti);
     }
 }
