@@ -18,6 +18,8 @@ int main(int argc, char const *argv[]) {
                 case sf::Event::Closed:
                     window.close();
                     break;
+                case sf::Event::KeyPressed:
+
 
                 default:
                     break;

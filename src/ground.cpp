@@ -6,12 +6,12 @@
 
 #include "ground.h"
 
-Ground::Ground(sf::Texture* texture, int* groundWidth, int* groundHeight, float* backgroundSpeed) {
+Ground::Ground(sf::Texture* texture, int* groundWidth, int* groundHeight, float* gameSpeed) {
 
     srand(time(nullptr));
     this->texture = *texture;
     this->groundHeight = groundHeight;
-    this->backgroundSpeed = backgroundSpeed;
+    this->gameSpeed = gameSpeed;
 
     sf::Vector2u textureSize = this->texture.getSize();
     int numSegments = ceil(*groundWidth / segmentSize) + 2;
@@ -31,8 +31,8 @@ Ground::Ground(sf::Texture* texture, int* groundWidth, int* groundHeight, float*
 void Ground::update(float deltaTime) {
     totalTime += deltaTime;
 
-    if (totalTime >= *backgroundSpeed) {
-        totalTime -= *backgroundSpeed;
+    if (totalTime >= *gameSpeed) {
+        totalTime -= *gameSpeed;
         int disappearanceThreshold = -5;
         for (sf::Sprite& segment : segments) {
             segment.move(-1, 0);

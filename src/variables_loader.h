@@ -15,7 +15,8 @@ public:
     int groundHeight = 300;
     int tRexHeight = 245;
     int tRexJumpHeight = 350;
-    float backgroundSpeed = 0.0025f;
+    float gameSpeed = 0.0025f;
+    float maxGameSpeed = 0.005f;
 
     VariablesLoader();
 private:

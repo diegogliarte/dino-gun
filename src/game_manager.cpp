@@ -6,14 +6,14 @@
 
 GameManager::GameManager(VariablesLoader* variablesLoader, sf::RenderWindow* window) :
 tRex(&variablesLoader->tRexTexture, &variablesLoader->tRexHeight, &variablesLoader->tRexJumpHeight),
-ground(&variablesLoader->groundTexture, &variablesLoader->windowWidth, &variablesLoader->groundHeight, &variablesLoader->backgroundSpeed)
+ground(&variablesLoader->groundTexture, &variablesLoader->windowWidth, &variablesLoader->groundHeight, &variablesLoader->gameSpeed)
 {
     this->variablesLoader = variablesLoader;
     this->window = window;
 
     int numCactus = 1;
     for (int i = 0; i < numCactus; i++) {
-        Cacti cacti(&this->variablesLoader->backgroundSpeed, &this->variablesLoader->windowWidth);
+        Cacti cacti(&this->variablesLoader->gameSpeed, &this->variablesLoader->windowWidth);
         cacti.setTexture(this->variablesLoader->cactiTexture);
         cacti.setPosition(this->variablesLoader->windowWidth, this->variablesLoader->groundHeight - 55);
         this->cactus.push_back(cacti);
