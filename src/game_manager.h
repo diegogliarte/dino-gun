@@ -15,13 +15,13 @@ public:
     T_Rex tRex;
     Ground ground;
     sf::RenderWindow* window;
-    GameManager(VariablesLoader* constantsLoader, sf::RenderWindow* window);
+    GameManager(VariablesLoader* variablesLoader, sf::RenderWindow* window);
     void update();
     void draw();
 
 private:
     sf::Clock clock;
-    VariablesLoader *constantsLoader;
+    VariablesLoader *variablesLoader;
     void gameOver();
 };
 

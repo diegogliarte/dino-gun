@@ -6,10 +6,10 @@
 
 
 int main(int argc, char const *argv[]) {
-    VariablesLoader constantsLoader;
-    sf::RenderWindow window(sf::VideoMode(constantsLoader.windowWidth, constantsLoader.windowHeight), "DinoGun");
+    VariablesLoader variablesLoader;
+    sf::RenderWindow window(sf::VideoMode(variablesLoader.windowWidth, variablesLoader.windowHeight), "DinoGun");
 
-    GameManager gameManager(&constantsLoader, &window);
+    GameManager gameManager(&variablesLoader, &window);
     int i = 0;
     while (window.isOpen()) {
         sf::Event event;

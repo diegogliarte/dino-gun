@@ -4,18 +4,18 @@
 #include "variables_loader.h"
 
 
-GameManager::GameManager(VariablesLoader* constantsLoader, sf::RenderWindow* window) :
-tRex(&constantsLoader->tRexTexture, &constantsLoader->tRexHeight, &constantsLoader->tRexJumpHeight),
-ground(&constantsLoader->groundTexture, &constantsLoader->windowWidth, &constantsLoader->groundHeight, &constantsLoader->backgroundSpeed)
+GameManager::GameManager(VariablesLoader* variablesLoader, sf::RenderWindow* window) :
+tRex(&variablesLoader->tRexTexture, &variablesLoader->tRexHeight, &variablesLoader->tRexJumpHeight),
+ground(&variablesLoader->groundTexture, &variablesLoader->windowWidth, &variablesLoader->groundHeight, &variablesLoader->backgroundSpeed)
 {
-    this->constantsLoader = constantsLoader;
+    this->variablesLoader = variablesLoader;
     this->window = window;
 
     int numCactus = 1;
     for (int i = 0; i < numCactus; i++) {
-        Cacti cacti(&this->constantsLoader->backgroundSpeed, &this->constantsLoader->windowWidth);
-        cacti.setTexture(this->constantsLoader->cactiTexture);
-        cacti.setPosition(this->constantsLoader->windowWidth, this->constantsLoader->groundHeight - 55);
+        Cacti cacti(&this->variablesLoader->backgroundSpeed, &this->variablesLoader->windowWidth);
+        cacti.setTexture(this->variablesLoader->cactiTexture);
+        cacti.setPosition(this->variablesLoader->windowWidth, this->variablesLoader->groundHeight - 55);
         this->cactus.push_back(cacti);
     }
 }

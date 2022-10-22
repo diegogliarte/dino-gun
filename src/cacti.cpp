@@ -13,7 +13,7 @@ void Cacti::update(float deltaTime) {
         totalTime -= *backgroundSpeed;
         move(-1, 0);
         int disappearanceThreshold = -5;
-        if (getPosition().x <= disappearanceThreshold) {
+        if (getPosition().x + getTextureRect().width <= disappearanceThreshold) {
             setPosition(*windowWidth, getPosition().y);
         }
     }
