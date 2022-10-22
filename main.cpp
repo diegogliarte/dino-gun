@@ -13,7 +13,8 @@ int main(int argc, char const *argv[]) {
     sf::Texture tRexTexture;
     tRexTexture.loadFromFile("./sprites/t_rex.png");
     int groundMisplacementCorrection = 55;
-    T_Rex tRex(&tRexTexture, groundHeight - groundMisplacementCorrection);
+    int jumpHeight = 350;
+    T_Rex tRex(&tRexTexture, groundHeight - groundMisplacementCorrection, jumpHeight);
 
     float backgroundSpeed = 0.0025f;
     Ground ground(width, groundHeight, backgroundSpeed);
