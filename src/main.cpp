@@ -2,11 +2,11 @@
 #include "t_rex.h"
 #include "game_manager.h"
 #include "ground.h"
-#include "constants_loader.h"
+#include "variables_loader.h"
 
 
 int main(int argc, char const *argv[]) {
-    ConstantsLoader constantsLoader;
+    VariablesLoader constantsLoader;
     sf::RenderWindow window(sf::VideoMode(constantsLoader.windowWidth, constantsLoader.windowHeight), "DinoGun");
 
     GameManager gameManager(&constantsLoader, &window);

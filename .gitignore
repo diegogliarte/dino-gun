@@ -1,3 +1,5 @@
 .idea
 *.o
 app
+CMakeLists.txt
+cmake-build-debug

@@ -5,7 +5,7 @@
 #include "t_rex.h"
 #include "ground.h"
 #include "cacti.h"
-#include "constants_loader.h"
+#include "variables_loader.h"
 
 
 class GameManager {
@@ -15,13 +15,13 @@ public:
     T_Rex tRex;
     Ground ground;
     sf::RenderWindow* window;
-    GameManager(ConstantsLoader* constantsLoader, sf::RenderWindow* window);
+    GameManager(VariablesLoader* constantsLoader, sf::RenderWindow* window);
     void update();
     void draw();
 
 private:
     sf::Clock clock;
-    ConstantsLoader *constantsLoader;
+    VariablesLoader *constantsLoader;
     void gameOver();
 };
 

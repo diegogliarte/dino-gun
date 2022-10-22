@@ -1,10 +1,10 @@
 #include "game_manager.h"
 #include "t_rex.h"
 #include "cacti.h"
-#include "constants_loader.h"
+#include "variables_loader.h"
 
 
-GameManager::GameManager(ConstantsLoader* constantsLoader, sf::RenderWindow* window) :
+GameManager::GameManager(VariablesLoader* constantsLoader, sf::RenderWindow* window) :
 tRex(&constantsLoader->tRexTexture, &constantsLoader->tRexHeight, &constantsLoader->tRexJumpHeight),
 ground(&constantsLoader->groundTexture, &constantsLoader->windowWidth, &constantsLoader->groundHeight, &constantsLoader->backgroundSpeed)
 {

@@ -1,7 +1,7 @@
-#include "constants_loader.h"
+#include "variables_loader.h"
 #include <iostream>
 
-ConstantsLoader::ConstantsLoader() {
+VariablesLoader::VariablesLoader() {
     std::string folder = "../sprites/";
     tRexTexture.loadFromFile(folder + "t_rex.png");
     groundTexture.loadFromFile(folder + "ground.png");

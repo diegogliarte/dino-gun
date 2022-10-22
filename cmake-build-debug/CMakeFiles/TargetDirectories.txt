@@ -1,3 +1,0 @@
-/home/diego/Documents/Programming/C++/dino-gun/cmake-build-debug/CMakeFiles/dino_gun.dir
-/home/diego/Documents/Programming/C++/dino-gun/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/diego/Documents/Programming/C++/dino-gun/cmake-build-debug/CMakeFiles/rebuild_cache.dir

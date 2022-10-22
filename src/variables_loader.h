@@ -1,10 +1,10 @@
-#ifndef DINO_GUN_CONSTANTS_LOADER_H
-#define DINO_GUN_CONSTANTS_LOADER_H
+#ifndef DINO_GUN_VARIABLES_LOADER_H
+#define DINO_GUN_VARIABLES_LOADER_H
 
 
 #include <SFML/Graphics/Texture.hpp>
 
-class ConstantsLoader {
+class VariablesLoader {
 public:
     sf::Texture tRexTexture;
     sf::Texture groundTexture;
@@ -17,11 +17,11 @@ public:
     int tRexJumpHeight = 350;
     float backgroundSpeed = 0.0025f;
 
-    ConstantsLoader();
+    VariablesLoader();
 private:
 
 
 };
 
 
-#endif //DINO_GUN_CONSTANTS_LOADER_H
+#endif //DINO_GUN_VARIABLES_LOADER_H
