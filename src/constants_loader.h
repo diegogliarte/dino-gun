@@ -1,5 +1,5 @@
-#ifndef DINO_GUN_CONSTANTSLOADER_H
-#define DINO_GUN_CONSTANTSLOADER_H
+#ifndef DINO_GUN_CONSTANTS_LOADER_H
+#define DINO_GUN_CONSTANTS_LOADER_H
 
 
 #include <SFML/Graphics/Texture.hpp>
@@ -24,4 +24,4 @@ private:
 };
 
 
-#endif //DINO_GUN_CONSTANTSLOADER_H
+#endif //DINO_GUN_CONSTANTS_LOADER_H

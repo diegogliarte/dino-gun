@@ -1,5 +1,5 @@
 #include "animation.h"
-
+#include <iostream>
 Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime) {
     this->imageCount = imageCount;
     this->switchTime = switchTime;

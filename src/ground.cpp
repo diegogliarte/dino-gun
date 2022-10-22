@@ -2,21 +2,24 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <iostream>
 
 #include "ground.h"
 
-Ground::Ground(int* groundWidth, int* groundHeight, float* backgroundSpeed) {
+Ground::Ground(sf::Texture* texture, int* groundWidth, int* groundHeight, float* backgroundSpeed) {
+
     srand(time(NULL));
+    this->texture = *texture;
     this->groundHeight = groundHeight;
     this->backgroundSpeed = backgroundSpeed;
 
-    this->texture.loadFromFile("./sprites/ground.png");
     sf::Vector2u textureSize = this->texture.getSize();
     int numSegments = ceil(*groundWidth / segmentSize) + 2;
+
     for (int i = 0; i < numSegments; i++) {
         sf::Sprite segment;
         segment.setTexture(this->texture);
-        int randomTexture = rand() % textureSize.x / segmentSize;
+        int randomTexture = 0; // TODO Fix randomness
         sf::IntRect rect(segmentSize * randomTexture, 0, segmentSize, textureSize.y);
         segment.setTextureRect(rect);
         segment.setPosition(segmentSize * i, *groundHeight);
@@ -35,7 +38,8 @@ void Ground::update(float deltaTime) {
             segment.move(-1, 0);
             if (segment.getPosition().x + segmentSize <= disappearanceThreshold) {
                 segment.setPosition((segments.size() - 1) * segmentSize + disappearanceThreshold, *groundHeight);
-                segment.setTextureRect(sf::IntRect(segmentSize * rand() % texture.getSize().x, 0, segmentSize, texture.getSize().y));
+                int randomTexture = 1;
+                segment.setTextureRect(sf::IntRect(segmentSize * randomTexture % texture.getSize().x, 0, segmentSize, texture.getSize().y));
             }
         }
     }
@@ -45,6 +49,5 @@ void Ground::update(float deltaTime) {
 void Ground::draw(sf::RenderWindow* window) {
     for (sf::Sprite& segment : segments) {
         window->draw(segment);
-//        std::cout << segment.getPosition().x << std::endl;
     }
 }

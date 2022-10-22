@@ -1,12 +1,12 @@
 #include "game_manager.h"
 #include "t_rex.h"
 #include "cacti.h"
-#include "constantsLoader.h"
+#include "constants_loader.h"
 
 
 GameManager::GameManager(ConstantsLoader* constantsLoader, sf::RenderWindow* window) :
 tRex(&constantsLoader->tRexTexture, &constantsLoader->tRexHeight, &constantsLoader->tRexJumpHeight),
-ground(&constantsLoader->windowWidth, &constantsLoader->groundHeight, &constantsLoader->backgroundSpeed)
+ground(&constantsLoader->groundTexture, &constantsLoader->windowWidth, &constantsLoader->groundHeight, &constantsLoader->backgroundSpeed)
 {
     this->constantsLoader = constantsLoader;
     this->window = window;
@@ -21,11 +21,14 @@ ground(&constantsLoader->windowWidth, &constantsLoader->groundHeight, &constants
 }
 
 void GameManager::update() {
+
     float deltaTime = clock.restart().asSeconds();
     ground.update(deltaTime);
+
     for (Dinosaur& dinosaur : dinosaurs) {
         dinosaur.update(deltaTime, 0);
     }
+
     for (Cacti& cacti : cactus) {
         cacti.update(deltaTime);
         if (tRex.getGlobalBounds().intersects(cacti.getGlobalBounds())) {
@@ -34,17 +37,18 @@ void GameManager::update() {
         }
     }
     tRex.update(deltaTime, 1);
+
 }
 
 void GameManager::draw() {
-    ground.draw(window);
-    for (Dinosaur dinosaur : dinosaurs) {
+    this->ground.draw(this->window);
+    for (Dinosaur dinosaur : this->dinosaurs) {
         dinosaur.draw(window);
     }
-    for (Cacti cacti : cactus) {
-        cacti.draw(window);
+    for (Cacti cacti : this->cactus) {
+        cacti.draw(this->window);
     }
-    tRex.draw(window);
+    this->tRex.draw(this->window);
 }
 
 void GameManager::gameOver() {

@@ -2,7 +2,7 @@
 #include "t_rex.h"
 #include "game_manager.h"
 #include "ground.h"
-#include "constantsLoader.h"
+#include "constants_loader.h"
 
 
 int main(int argc, char const *argv[]) {
@@ -10,7 +10,7 @@ int main(int argc, char const *argv[]) {
     sf::RenderWindow window(sf::VideoMode(constantsLoader.windowWidth, constantsLoader.windowHeight), "DinoGun");
 
     GameManager gameManager(&constantsLoader, &window);
-
+    int i = 0;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
