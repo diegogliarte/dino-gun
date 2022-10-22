@@ -21,7 +21,7 @@ private:
     sf::Clock clock;
     sf::Texture cactiTexture;
     float backgroundSpeed;
-
+    void gameOver();
 };
 
 

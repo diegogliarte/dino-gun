@@ -29,7 +29,8 @@ void GameManager::update() {
     for (Cacti& cacti : cactus) {
         cacti.update(deltaTime);
         if (tRex->getGlobalBounds().intersects(cacti.getGlobalBounds())) {
-            tRex->setColor(sf::Color(255, 0, 0));
+            gameOver();
+
         }
     }
     tRex->update(deltaTime, 1);
@@ -44,4 +45,8 @@ void GameManager::draw() {
         cacti.draw(window);
     }
     tRex->draw(window);
+}
+
+void GameManager::gameOver() {
+    tRex->setColor(sf::Color(255, 0, 0));
 }
