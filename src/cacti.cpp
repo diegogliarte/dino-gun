@@ -1,5 +1,6 @@
 
 #include <SFML/Graphics/Texture.hpp>
+#include <iostream>
 #include "cacti.h"
 
 Cacti::Cacti(float* gameSpeed, int* windowWidth) {
@@ -12,10 +13,6 @@ void Cacti::update(float deltaTime) {
     if (totalTime >= *gameSpeed) {
         totalTime -= *gameSpeed;
         move(-1, 0);
-        int disappearanceThreshold = -5;
-        if (getPosition().x + getTextureRect().width <= disappearanceThreshold) {
-            setPosition(*windowWidth, getPosition().y);
-        }
     }
 
 }

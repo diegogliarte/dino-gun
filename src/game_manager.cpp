@@ -6,49 +6,34 @@
 
 GameManager::GameManager(VariablesLoader* variablesLoader, sf::RenderWindow* window) :
 tRex(&variablesLoader->tRexTexture, &variablesLoader->tRexHeight, &variablesLoader->tRexJumpHeight),
-ground(&variablesLoader->groundTexture, &variablesLoader->windowWidth, &variablesLoader->groundHeight, &variablesLoader->gameSpeed)
+ground(&variablesLoader->groundTexture, &variablesLoader->windowWidth, &variablesLoader->groundHeight, &variablesLoader->gameSpeed),
+enemiesManager(variablesLoader)
 {
     this->variablesLoader = variablesLoader;
     this->window = window;
 
-    int numCactus = 1;
-    for (int i = 0; i < numCactus; i++) {
-        Cacti cacti(&this->variablesLoader->gameSpeed, &this->variablesLoader->windowWidth);
-        cacti.setTexture(this->variablesLoader->cactiTexture);
-        cacti.setPosition(this->variablesLoader->windowWidth, this->variablesLoader->groundHeight - 55);
-        this->cactus.push_back(cacti);
-    }
+//    int numCactus = 1;
+//    for (int i = 0; i < numCactus; i++) {
+//        Cacti cacti(&this->variablesLoader->gameSpeed, &this->variablesLoader->windowWidth);
+//        cacti.setTexture(this->variablesLoader->cactiTexture);
+//        cacti.setPosition(this->variablesLoader->windowWidth, this->variablesLoader->groundHeight - 55);
+//        this->cactus.push_back(cacti);
+//    }
 }
 
 void GameManager::update() {
 
     float deltaTime = clock.restart().asSeconds();
-    ground.update(deltaTime);
-
-    for (Dinosaur& dinosaur : dinosaurs) {
-        dinosaur.update(deltaTime, 0);
-    }
-
-    for (Cacti& cacti : cactus) {
-        cacti.update(deltaTime);
-        if (tRex.getGlobalBounds().intersects(cacti.getGlobalBounds())) {
-            gameOver();
-
-        }
-    }
     tRex.update(deltaTime, 1);
+    enemiesManager.update(deltaTime);
+    ground.update(deltaTime);
 
 }
 
 void GameManager::draw() {
-    this->ground.draw(this->window);
-    for (Dinosaur dinosaur : this->dinosaurs) {
-        dinosaur.draw(window);
-    }
-    for (Cacti cacti : this->cactus) {
-        cacti.draw(this->window);
-    }
     this->tRex.draw(this->window);
+    this->enemiesManager.draw(this->window);
+    this->ground.draw(this->window);
 }
 
 void GameManager::gameOver() {

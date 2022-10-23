@@ -6,12 +6,13 @@
 #include "ground.h"
 #include "cacti.h"
 #include "variables_loader.h"
+#include "enemies_manager.h"
 
 
 class GameManager {
 public:
-    std::vector<Dinosaur> dinosaurs;
-    std::vector<Cacti> cactus;
+    EnemiesManager enemiesManager;
+
     T_Rex tRex;
     Ground ground;
     sf::RenderWindow* window;

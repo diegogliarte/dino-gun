@@ -17,6 +17,8 @@ public:
     int tRexJumpHeight = 350;
     float gameSpeed = 0.0025f;
     float maxGameSpeed = 0.005f;
+    float cactiSpawnTime = 2.0f;
+    float dinosaurSpawnTime = 2.0f;
 
     VariablesLoader();
 private:
