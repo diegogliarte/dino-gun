@@ -6,7 +6,7 @@ const float GRAVITY = 981.0f;
 
 T_Rex::T_Rex(sf::Texture* texture, int* groundHeight, int* jumpHeight)
 : Dinosaur(texture, sf::Vector2f(50, *groundHeight), sf::Vector2u(2, 2)) {
-    this->groundHeight = groundHeight;
+    this->groundHeight = groundHeight; 
     this->jumpHeight = jumpHeight;
 }
 

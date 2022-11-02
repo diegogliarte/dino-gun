@@ -7,7 +7,7 @@
 GameManager::GameManager(VariablesLoader* variablesLoader, sf::RenderWindow* window) :
 tRex(&variablesLoader->tRexTexture, &variablesLoader->tRexHeight, &variablesLoader->tRexJumpHeight),
 ground(&variablesLoader->groundTexture, &variablesLoader->windowWidth, &variablesLoader->groundHeight, &variablesLoader->gameSpeed),
-enemiesManager(variablesLoader)
+enemiesManager(variablesLoader, &tRex)
 {
     this->variablesLoader = variablesLoader;
     this->window = window;
@@ -27,6 +27,9 @@ void GameManager::update() {
     tRex.update(deltaTime, 1);
     enemiesManager.update(deltaTime);
     ground.update(deltaTime);
+    if (enemiesManager.is_hit) {
+        gameOver();
+    }
 
 }
 
@@ -37,5 +40,6 @@ void GameManager::draw() {
 }
 
 void GameManager::gameOver() {
+    variablesLoader->gameSpeed = 0;
     tRex.setColor(sf::Color(255, 0, 0));
 }

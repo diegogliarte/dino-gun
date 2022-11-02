@@ -2,7 +2,8 @@
 #include "utils.h"
 
 
-EnemiesManager::EnemiesManager(VariablesLoader *variablesLoader) {
+EnemiesManager::EnemiesManager(VariablesLoader *variablesLoader, T_Rex *tRex) {
+    this->tRex = tRex;
     this->variablesLoader = variablesLoader;
     cactiSpawner.spawnTime = &variablesLoader->cactiSpawnTime;
 }
@@ -13,7 +14,7 @@ void EnemiesManager::update(float deltaTime) {
     if (cactiSpawner.currentTime >= cactiSpawner.nextTimeToSpawn) {
         spawnCacti();
         cactiSpawner.nextTimeToSpawn = generateRandomNumberBetween(0.75, 1.25) * *cactiSpawner.spawnTime;
-
+        cactiSpawner.currentTime = 0;
     }
 
     float disappearanceThreshold = -5;
@@ -24,13 +25,17 @@ void EnemiesManager::update(float deltaTime) {
 
     for (Cacti &cacti : this->cactiSpawner.cactus) {
         cacti.update(deltaTime);
+        if (tRex->getGlobalBounds().intersects(cacti.getGlobalBounds())) {
+            this->is_hit = true;
+        }
     }
 
-    Cacti *firstCacti = &this->cactiSpawner.cactus[0];
-    if (firstCacti->getPosition().x + firstCacti->getTextureRect().width <= disappearanceThreshold) {
-        this->cactiSpawner.cactus.pop_front();
+    if (!this->cactiSpawner.cactus.empty()) {
+        Cacti firstCacti = this->cactiSpawner.cactus[0];
+        if (firstCacti.getPosition().x + firstCacti.getTextureRect().width <= disappearanceThreshold) {
+            this->cactiSpawner.cactus.pop_front();
+        }
     }
-
 }
 
 void EnemiesManager::draw(sf::RenderWindow* window) {
@@ -43,7 +48,6 @@ void EnemiesManager::draw(sf::RenderWindow* window) {
 }
 
 void EnemiesManager::spawnCacti() {
-    cactiSpawner.currentTime -= *cactiSpawner.spawnTime;
     Cacti cacti(&variablesLoader->gameSpeed, &variablesLoader->windowWidth);
     cacti.setTexture(this->variablesLoader->cactiTexture);
     cacti.setPosition(this->variablesLoader->windowWidth, this->variablesLoader->groundHeight - 55);

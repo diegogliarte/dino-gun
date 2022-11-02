@@ -7,6 +7,7 @@
 #include "dinosaur.h"
 #include "cacti.h"
 #include "variables_loader.h"
+#include "t_rex.h"
 
 
 class EnemiesManager {
@@ -25,12 +26,14 @@ public:
         float nextTimeToSpawn = 0;
     } dinosaurSpawner;
 
-    EnemiesManager(VariablesLoader *variablesLoader);
+    EnemiesManager(VariablesLoader *variablesLoader, T_Rex *tRex);
     void update(float deltaTime);
     void draw(sf::RenderWindow* window);
+    bool is_hit = false;
 private:
     VariablesLoader *variablesLoader;
     void spawnCacti();
+    T_Rex *tRex;
 
 
 };
